@@ -3,7 +3,7 @@
 /*
  * This file is part of the Assetic package, an OpenSky project.
  *
- * (c) 2010-2012 OpenSky Project Inc
+ * (c) 2010-2013 OpenSky Project Inc
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -38,6 +38,7 @@ class AssetCollection implements \IteratorAggregate, AssetCollectionInterface
      * @param array  $assets     Assets for the current collection
      * @param array  $filters    Filters for the current collection
      * @param string $sourceRoot The root directory
+     * @param array  $vars
      */
     public function __construct($assets = array(), $filters = array(), $sourceRoot = null, array $vars = array())
     {
@@ -51,6 +52,12 @@ class AssetCollection implements \IteratorAggregate, AssetCollectionInterface
         $this->clones = new \SplObjectStorage();
         $this->vars = $vars;
         $this->values = array();
+    }
+
+    public function __clone()
+    {
+        $this->filters = clone $this->filters;
+        $this->clones = new \SplObjectStorage();
     }
 
     public function all()
@@ -69,8 +76,11 @@ class AssetCollection implements \IteratorAggregate, AssetCollectionInterface
             $clone = isset($this->clones[$asset]) ? $this->clones[$asset] : null;
             if (in_array($needle, array($asset, $clone), true)) {
                 unset($this->clones[$asset], $this->assets[$i]);
+
                 return true;
-            } elseif ($asset instanceof AssetCollectionInterface && $asset->removeLeaf($needle, true)) {
+            }
+
+            if ($asset instanceof AssetCollectionInterface && $asset->removeLeaf($needle, true)) {
                 return true;
             }
         }
@@ -89,8 +99,11 @@ class AssetCollection implements \IteratorAggregate, AssetCollectionInterface
             if (in_array($needle, array($asset, $clone), true)) {
                 unset($this->clones[$asset]);
                 $this->assets[$i] = $replacement;
+
                 return true;
-            } elseif ($asset instanceof AssetCollectionInterface && $asset->replaceLeaf($needle, $replacement, true)) {
+            }
+
+            if ($asset instanceof AssetCollectionInterface && $asset->replaceLeaf($needle, $replacement, true)) {
                 return true;
             }
         }
@@ -180,12 +193,15 @@ class AssetCollection implements \IteratorAggregate, AssetCollectionInterface
             return;
         }
 
-        $mapper = function (AssetInterface $asset)
-        {
-            return $asset->getLastModified();
-        };
+        $mtime = 0;
+        foreach ($this as $asset) {
+            $assetMtime = $asset->getLastModified();
+            if ($assetMtime > $mtime) {
+                $mtime = $assetMtime;
+            }
+        }
 
-        return max(array_map($mapper, $this->assets));
+        return $mtime;
     }
 
     /**

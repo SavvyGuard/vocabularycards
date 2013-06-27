@@ -1421,6 +1421,10 @@ class ClassMetadataInfo implements ClassMetadata
         $mapping['orphanRemoval']   = isset($mapping['orphanRemoval']) ? (bool) $mapping['orphanRemoval'] : false;
         $mapping['isCascadeRemove'] = $mapping['orphanRemoval'] ? true : $mapping['isCascadeRemove'];
 
+        if ($mapping['orphanRemoval']) {
+            unset($mapping['unique']);
+        }
+
         if (isset($mapping['id']) && $mapping['id'] === true && !$mapping['isOwningSide']) {
             throw MappingException::illegalInverseIdentifierAssocation($this->name, $mapping['fieldName']);
         }
@@ -1477,6 +1481,8 @@ class ClassMetadataInfo implements ClassMetadata
                         'referencedColumnName' => $this->namingStrategy->referenceColumnName(),
                         'onDelete' => 'CASCADE'));
             }
+
+            $mapping['joinTableColumns'] = array();
 
             foreach ($mapping['joinTable']['joinColumns'] as &$joinColumn) {
                 if (empty($joinColumn['name'])) {
@@ -2724,7 +2730,7 @@ class ClassMetadataInfo implements ClassMetadata
             // Association defined as Id field
             $joinColumns            = $this->associationMappings[$idProperty]['joinColumns'];
             $assocQuotedColumnNames = array_map(
-                function ($joinColumn) {
+                function ($joinColumn) use ($platform) {
                     return isset($joinColumn['quoted'])
                         ? $platform->quoteIdentifier($joinColumn['name'])
                         : $joinColumn['name'];

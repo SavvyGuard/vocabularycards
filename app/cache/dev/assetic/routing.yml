@@ -2,4 +2,4 @@ _assetic:
     resource: .
     type: assetic
 _app:
-    resource: /home/jamesjwu/public_html/gre/app/config/routing_dev.yml
+    resource: /home/james/vocab2/app/config/routing_dev.yml

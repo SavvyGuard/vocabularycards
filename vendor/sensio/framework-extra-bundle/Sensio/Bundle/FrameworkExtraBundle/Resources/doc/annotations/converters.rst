@@ -119,8 +119,8 @@ If you want to match an entity using multiple fields use ``mapping``::
 
     /**
      * @Route("/blog/{date}/{slug}/comments/{comment_slug}")
-     * @ParamConverter("post", options={"mapping": {"date": "date", "slug": "slug"})
-     * @ParamConverter("comment", options={"mapping": {"comment_slug": "slug"})
+     * @ParamConverter("post", options={"mapping": {"date": "date", "slug": "slug"}})
+     * @ParamConverter("comment", options={"mapping": {"comment_slug": "slug"}})
      */
     public function showAction(Post $post, Comment $comment)
     {
@@ -137,6 +137,17 @@ route parameter from being part of the criteria::
     {
     }
 
+If you want to specify the repository method to use to find the entity (for example,
+to add joins to the query), you can add the ``repository_method`` option::
+
+    /**
+     * @Route("/blog/{id}")
+     * @ParamConverter("post", class="SensioBlogBundle:Post", options={"repository_method" = "findWithJoins"})
+     */
+    public function showAction(Post $post)
+    {
+    }
+
 DateTime Converter
 ~~~~~~~~~~~~~~~~~~
 
@@ -148,7 +159,7 @@ instance::
     /**
      * @Route("/blog/archive/{start}/{end}")
      */
-    public function archiveAction(DateTime $start, DateTime $end)
+    public function archiveAction(\DateTime $start, \DateTime $end)
     {
     }
 
@@ -160,7 +171,7 @@ is accepted. You can be stricter with input given through the options::
      * @ParamConverter("start", options={"format": "Y-m-d"})
      * @ParamConverter("end", options={"format": "Y-m-d"})
      */
-    public function archiveAction(DateTime $start, DateTime $end)
+    public function archiveAction(\DateTime $start, \DateTime $end)
     {
     }
 
@@ -201,16 +212,26 @@ To register your converter service you must add a tag to your service
 
 .. configuration-block::
 
+    .. code-block:: yaml
+
+        # app/config/config.yml
+        services:
+            my_converter:
+                class:        MyBundle\Request\ParamConverter\MyConverter
+                tags:
+                    - { name: request.param_converter, priority: -2, converter: my_converter }
+
     .. code-block:: xml
 
-        <service id="my_converter" class="MyBundle/Request/ParamConverter/MyConverter">
-            <tag name="request.param_converter" priority="-2" name="my_converter" />
+        <service id="my_converter" class="MyBundle\Request\ParamConverter\MyConverter">
+            <tag name="request.param_converter" priority="-2" converter="my_converter" />
         </service>
 
-You can register a converter by priority, by name or both. If you don't
-specifiy a priority or name the converter will be added to the converter stack
-with a priority of `0`. To explicitly disable the registration by priority you
-have to set `priority="false"` in your tag definition.
+You can register a converter by priority, by name (attribute "converter") or
+both. If you don't specifiy a priority or name the converter will be added to
+the converter stack with a priority of `0`. To explicitly disable the
+registration by priority you have to set `priority="false"` in your tag
+definition.
 
 .. tip::
 

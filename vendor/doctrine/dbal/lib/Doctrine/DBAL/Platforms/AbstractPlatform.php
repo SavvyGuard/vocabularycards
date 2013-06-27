@@ -237,7 +237,7 @@ abstract class AbstractPlatform
      *
      * @return string
      */
-    public function getGuidTypeDeclartionSQL(array $field)
+    public function getGuidTypeDeclarationSQL(array $field)
     {
         return $this->getVarcharTypeDeclarationSQL($field);
     }
@@ -1165,7 +1165,10 @@ abstract class AbstractPlatform
             foreach ($table->getIndexes() as $index) {
                 /* @var $index Index */
                 if ($index->isPrimary()) {
-                    $options['primary'] = $index->getColumns();
+                    $platform = $this;
+                    $options['primary'] = array_map(function ($columnName) use ($table, $platform) {
+                        return $table->getColumn($columnName)->getQuotedName($platform);
+                    }, $index->getColumns());
                     $options['primary_index'] = $index;
                 } else {
                     $options['indexes'][$index->getName()] = $index;

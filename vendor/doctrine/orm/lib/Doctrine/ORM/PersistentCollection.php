@@ -42,6 +42,7 @@ use Closure;
  * @author    Konsta Vesterinen <kvesteri@cc.hut.fi>
  * @author    Roman Borschel <roman@code-factory.org>
  * @author    Giorgio Sironi <piccoloprincipeazzurro@gmail.com>
+ * @author    Stefano Rodriguez <stefano.rodriguez@fubles.com>
  * @todo      Design for inheritance to allow custom implementations?
  */
 final class PersistentCollection implements Collection, Selectable
@@ -654,7 +655,7 @@ final class PersistentCollection implements Collection, Selectable
 
         $this->initialized = true; // direct call, {@link initialize()} is too expensive
 
-        if ($this->association['isOwningSide']) {
+        if ($this->association['isOwningSide'] && $this->owner) {
             $this->changed();
 
             $uow->scheduleCollectionDeletion($this);
@@ -804,6 +805,10 @@ final class PersistentCollection implements Collection, Selectable
      */
     public function matching(Criteria $criteria)
     {
+        if ($this->isDirty) {
+            $this->initialize();
+        }
+
         if ($this->initialized) {
             return $this->coll->matching($criteria);
         }
@@ -812,9 +817,10 @@ final class PersistentCollection implements Collection, Selectable
             throw new \RuntimeException("Matching Criteria on PersistentCollection only works on OneToMany assocations at the moment.");
         }
 
-        $targetClass = $this->em->getClassMetadata(get_class($this->owner));
-
-        $id              = $targetClass->getSingleIdReflectionProperty()->getValue($this->owner);
+        $id              = $this->em
+            ->getClassMetadata(get_class($this->owner))
+            ->getSingleIdReflectionProperty()
+            ->getValue($this->owner);
         $builder         = Criteria::expr();
         $ownerExpression = $builder->eq($this->backRefFieldName, $id);
         $expression      = $criteria->getWhereExpression();

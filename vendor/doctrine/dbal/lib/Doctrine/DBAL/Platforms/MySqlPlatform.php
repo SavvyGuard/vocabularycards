@@ -372,7 +372,9 @@ class MySqlPlatform extends AbstractPlatform
         $query .= 'TABLE ' . $tableName . ' (' . $queryFields . ') ';
 
         if (isset($options['comment'])) {
-            $query .= 'COMMENT = ' . $options['comment'] . ' ';
+            $comment = trim($options['comment'], " '");
+
+            $query .= sprintf("COMMENT = '%s' ", str_replace("'", "''", $comment));
         }
 
         if ( ! isset($options['charset'])) {
@@ -380,7 +382,7 @@ class MySqlPlatform extends AbstractPlatform
         }
 
         if ( ! isset($options['collate'])) {
-            $options['collate'] = 'utf8_general_ci';
+            $options['collate'] = 'utf8_unicode_ci';
         }
 
         $query .= 'DEFAULT CHARACTER SET ' . $options['charset'];
@@ -673,6 +675,7 @@ class MySqlPlatform extends AbstractPlatform
             'tinyblob'      => 'blob',
             'binary'        => 'blob',
             'varbinary'     => 'blob',
+            'set'           => 'simple_array',
         );
     }
 

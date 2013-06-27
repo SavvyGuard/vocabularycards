@@ -3,7 +3,7 @@
 /*
  * This file is part of the Assetic package, an OpenSky project.
  *
- * (c) 2010-2012 OpenSky Project Inc
+ * (c) 2010-2013 OpenSky Project Inc
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -51,6 +51,7 @@ class AssetCache implements AssetInterface
         $cacheKey = self::getCacheKey($this->asset, $additionalFilter, 'load');
         if ($this->cache->has($cacheKey)) {
             $this->asset->setContent($this->cache->get($cacheKey));
+
             return;
         }
 
@@ -138,7 +139,7 @@ class AssetCache implements AssetInterface
      *
      * @return string A key for identifying the current asset
      */
-    static private function getCacheKey(AssetInterface $asset, FilterInterface $additionalFilter = null, $salt = '')
+    private static function getCacheKey(AssetInterface $asset, FilterInterface $additionalFilter = null, $salt = '')
     {
         if ($additionalFilter) {
             $asset = clone $asset;

@@ -25,8 +25,8 @@ class MainController extends Controller
     {
     	
     	$arg = array();
-
-    	return $this->render('JamesVocabBundle:Main:index.html.php', array('arg'=>$arg));
+    	
+	return $this->render('JamesVocabBundle:Main:index.html.php', array('arg'=>$arg));
     }
     
     /**

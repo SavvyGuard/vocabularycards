@@ -1,0 +1,14 @@
+vocab:
+    resource: "@JamesVocabBundle/Controller/MainController.php"
+    type:     annotation
+
+nba:
+    resource: "@JamesNBAStatsBundle/Controller/MainController.php"
+    type:     annotation
+    prefix:   /nba
+    
+nba_ajax:
+    resource: "@JamesNBAStatsBundle/Controller/AjaxController.php"
+    type:     annotation
+    prefix:   /_nba_ajax
+    

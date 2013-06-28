@@ -5,13 +5,12 @@
     <title>James J Wu</title>
      <meta charset="utf-8">
     <!-- Bootstrap -->
-    <link href="<?php echo $view['assets']->getUrl('bundles/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet" type="text/css" />
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css" />
   	<style>
       body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
       }
     </style>
-    <link href="<?php echo $view['assets']->getUrl('bundles/bootstrap/css/bootstrap-responsive.min.css') ?>" rel="stylesheet" type="text/css" />
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>  
   </head>
   <body>
@@ -42,8 +41,8 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-  <script src="<?php echo $view['assets']->getUrl('bundles/bootstrap/js/bootstrap.min.js') ?>"></script>
-  	<script>
+	<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>  	
+	<script>
 		$(document).ready(function () {
     	$("[rel=popover]").popover();
     	$("[rel=tooltip]").tooltip();

@@ -2,14 +2,14 @@
 
 services:
     db_fetcher:
-        class:     James\VocabBundle\DependencyInjection\DbFetcher
+        class:     JamesWu\VocabBundle\DependencyInjection\DbFetcher
         arguments: [@database_connection]
     dictionary:
-        class:     James\VocabBundle\DependencyInjection\MWAPIFetcher
+        class:     JamesWu\VocabBundle\DependencyInjection\MWAPIFetcher
         arguments: []
     word_generator:
-        class:     James\VocabBundle\DependencyInjection\WordGenerator
+        class:     JamesWu\VocabBundle\DependencyInjection\WordGenerator
         arguments: [@db_fetcher]
     word_manager:
-        class:     James\VocabBundle\DependencyInjection\WordManager
+        class:     JamesWu\VocabBundle\DependencyInjection\WordManager
         arguments: [@db_fetcher]

@@ -1,6 +1,6 @@
 <?php
 
-namespace James\VocabBundle\Controller;
+namespace JamesWu\VocabBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -18,7 +18,7 @@ class MainController extends Controller
 		
 	}
     /**
-     * @Route("/", name="jamesvocabbundle.main.index")
+     * @Route("/", name="jameswuvocabbundle.main.index")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction()
@@ -26,7 +26,7 @@ class MainController extends Controller
     	
     	$arg = array();
     	
-	return $this->render('JamesVocabBundle:Main:index.html.php', array('arg'=>$arg));
+	return $this->render('JamesWuVocabBundle:Main:index.html.php', array('arg'=>$arg));
     }
     
     /**
@@ -38,7 +38,7 @@ class MainController extends Controller
     
     	$arg = array();
     
-    	return $this->render('JamesVocabBundle:Main:about.html.php', array('arg'=>$arg));
+    	return $this->render('JamesWuVocabBundle:Main:about.html.php', array('arg'=>$arg));
     }
     
     /**

@@ -1,4 +1,4 @@
-<?php $view->extend('JamesVocabBundle::layout.html.php') ?>
+<?php $view->extend('JamesWuVocabBundle::layout.html.php') ?>
 <?php $view['slots']->start('body') ?>
 
 <div class="hero-unit">

@@ -22,10 +22,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="<?=$view['router']->generate('jamesvocabbundle.main.index')?>">Welcome</a>
+          <a class="brand" href="<?=$view['router']->generate('jameswuvocabbundle.main.index')?>">Welcome</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="<?php if ($view['request']->getParameter('_route') == 'jamesvocabbundle.main.index') echo 'active'?>"><a href="<?=$view['router']->generate('jamesvocabbundle.main.index')?>">Vocab Review</a></li>
+              <li class="<?php if ($view['request']->getParameter('_route') == 'jameswuvocabbundle.main.index') echo 'active'?>"><a href="<?=$view['router']->generate('jameswuvocabbundle.main.index')?>">Vocab Review</a></li>
               <li class="<?php if ($view['request']->getParameter('_route') == 'about_main') echo 'active'?>"><a href="<?=$view['router']->generate('about_main')?>">About</a></li>
               <li class="<?php if ($view['request']->getParameter('_route') == 'contact_main') echo 'active'?>"><a href="<?=$view['router']->generate('contact_main')?>">Contact</a></li>
             </ul>

@@ -1,8 +1,8 @@
 <?php
 
-// src/James/VocabBundle/DependencyInjection/WordGenerator.php
+// src/JamesWu/VocabBundle/DependencyInjection/WordGenerator.php
 
-namespace James\VocabBundle\DependencyInjection;
+namespace JamesWu\VocabBundle\DependencyInjection;
 
 class WordGenerator
 {

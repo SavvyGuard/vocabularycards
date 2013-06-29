@@ -1,8 +1,8 @@
 <?php
 
-// src/GREReview/VocabBundle/DependencyInjection/MWAPIFetcher.php
+// src/JamesWu/VocabBundle/DependencyInjection/MWAPIFetcher.php
 
-namespace James\VocabBundle\DependencyInjection;
+namespace JamesWu\VocabBundle\DependencyInjection;
 
 class MWAPIFetcher
 {

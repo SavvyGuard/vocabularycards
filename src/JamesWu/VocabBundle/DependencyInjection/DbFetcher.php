@@ -1,8 +1,8 @@
 <?php 
 
-// src/James/VocabBundle/DependencyInjection/DbFetcher.php
+// src/JamesWu/VocabBundle/DependencyInjection/DbFetcher.php
 
-namespace James\VocabBundle\DependencyInjection;
+namespace JamesWu\VocabBundle\DependencyInjection;
 
 /**
  * Class DbFetcher

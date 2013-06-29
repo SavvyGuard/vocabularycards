@@ -1,8 +1,8 @@
 <?php
 
-// src/James/VocabBundle/DependencyInjection/WordManager.php
+// src/JamesWu/VocabBundle/DependencyInjection/WordManager.php
 
-namespace James\VocabBundle\DependencyInjection;
+namespace JamesWu\VocabBundle\DependencyInjection;
 
 class WordManager
 {

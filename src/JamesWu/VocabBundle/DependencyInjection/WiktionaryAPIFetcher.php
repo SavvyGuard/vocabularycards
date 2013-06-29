@@ -1,8 +1,8 @@
 <?php
 
-// src/James/VocabBundle/DependencyInjection/WiktionaryAPIFetcher.php
+// src/JamesWu/VocabBundle/DependencyInjection/WiktionaryAPIFetcher.php
 
-namespace James\VocabBundle\DependencyInjection;
+namespace JamesWu\VocabBundle\DependencyInjection;
 
 class WiktionaryAPIFetcher
 {

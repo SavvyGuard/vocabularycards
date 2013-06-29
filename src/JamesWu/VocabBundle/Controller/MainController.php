@@ -50,7 +50,7 @@ class MainController extends Controller
     	 
     	$arg = array();
     
-    	return $this->render('JamesVocabBundle:Main:contact.html.php', array('arg'=>$arg));
+    	return $this->render('JamesWuVocabBundle:Main:contact.html.php', array('arg'=>$arg));
     }
     
     /**

@@ -1,4 +1,4 @@
-<?php $view->extend('JamesVocabBundle::layout.html.php') ?>
+<?php $view->extend('JamesWiVocabBundle::layout.html.php') ?>
 <?php $view['slots']->start('body') ?>
 
 	<h3> About Me</h3>	 

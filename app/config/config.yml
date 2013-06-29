@@ -1,6 +1,9 @@
+# app/config/config.yml
+
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: "@JamesWuVocabBundle/Resources/config/services.yml" }
 
 framework:
     #esi:             ~

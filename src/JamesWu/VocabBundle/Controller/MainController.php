@@ -30,30 +30,6 @@ class MainController extends Controller
     }
    
     /**
-     * @Route("/about", name="jameswuvocabbundle.main.about")
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function aboutAction()
-    {
-    
-    	$arg = array();
-    
-    	return $this->render('JamesWuVocabBundle:Main:about.html.php', array('arg'=>$arg));
-    }
-    
-    /**
-     * @Route("/contact", name="jameswuvocabbundle.main.contact")
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function contactAction()
-    {
-    	 
-    	$arg = array();
-    
-    	return $this->render('JamesWuVocabBundle:Main:contact.html.php', array('arg'=>$arg));
-    }
-    
-    /**
      * @Route("/random", name="jameswuvocabbundle.main.word.random")
      * @return \Symfony\Component\HttpFoundation\Response
      */

@@ -13,10 +13,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class MainController extends Controller
 {
 	
-	public function __construct() 
-	{
+    public function __construct() 
+    {
 		
-	}
+    }
     /**
      * @Route("/", name="jameswuvocabbundle.main.index")
      * @return \Symfony\Component\HttpFoundation\Response
@@ -28,9 +28,9 @@ class MainController extends Controller
     	
 	return $this->render('JamesWuVocabBundle:Main:index.html.php', array('arg'=>$arg));
     }
-    
+   
     /**
-     * @Route("/about", name="about_main")
+     * @Route("/about", name="jameswuvocabbundle.main.about)
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function aboutAction()
@@ -42,7 +42,7 @@ class MainController extends Controller
     }
     
     /**
-     * @Route("/contact", name="contact_main")
+     * @Route("/contact", name="jamesjwuvocabbundle.main.contact")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function contactAction()
@@ -54,7 +54,7 @@ class MainController extends Controller
     }
     
     /**
-     * @Route("/random", name="random_word_main")
+     * @Route("/random", name="jameswuvocabbundle.main.word.random")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function getRandomWordAction()
@@ -67,7 +67,7 @@ class MainController extends Controller
     }
     
     /**
-     * @Route("/status", name="word_status_main")
+     * @Route("/status", name="jameswuvocabbundle.main.word.status")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function setWordStatus()
@@ -85,7 +85,7 @@ class MainController extends Controller
     }
     
     /**
-     * @Route("/word/{word}", defaults={"word" = "game"}, name="def_word_main")
+     * @Route("/word/{word}", defaults={"word" = "game"}, name="jameswuvocabbundle.main.word.def")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function getWordDefAction($word)
@@ -96,6 +96,6 @@ class MainController extends Controller
     	$definition = $dictionary->getDefinition((string) $word);
 
         $jsonObj = json_encode($definition);
-		return new Response($jsonObj, 200, array('Vary' => 'Accept', 'Content-type' => 'application/json'));
+	return new Response($jsonObj, 200, array('Vary' => 'Accept', 'Content-type' => 'application/json'));
     }
 }

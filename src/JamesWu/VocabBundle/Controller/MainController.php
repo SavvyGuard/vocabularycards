@@ -30,7 +30,7 @@ class MainController extends Controller
     }
    
     /**
-     * @Route("/about", name="jameswuvocabbundle.main.about)
+     * @Route("/about", name="jameswuvocabbundle.main.about")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function aboutAction()
@@ -42,7 +42,7 @@ class MainController extends Controller
     }
     
     /**
-     * @Route("/contact", name="jamesjwuvocabbundle.main.contact")
+     * @Route("/contact", name="jameswuvocabbundle.main.contact")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function contactAction()

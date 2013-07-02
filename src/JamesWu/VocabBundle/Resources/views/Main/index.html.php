@@ -15,7 +15,7 @@
 <script>
 $("#word_text, #definition").click(function() {
 	var current_word = $('#word_text').text();
-	$.get("<?=$view['router']->generate('def_word_main')?>" + '/' + current_word, function(data){
+	$.get("<?=$view['router']->generate('jameswuvocabbundle.main.word.def')?>" + '/' + current_word, function(data){
 		console.log(data);
 		var word_class = data[0].class;
 		var definition_objects = data[0].definitions;
@@ -54,15 +54,15 @@ $("#word_text, #definition").click(function() {
 	}, "json");
 	});
 $(".btn").click(function() {
-	$.post("<?=$view['router']->generate('word_status_main')?>", { word_id: $('#word_text').attr('word_id'), status: $(this).attr('status') });
-	$.get("<?=$view['router']->generate('random_word_main')?>", function(data){
+	$.post("<?=$view['router']->generate('jameswuvocabbundle.main.word.status')?>", { word_id: $('#word_text').attr('word_id'), status: $(this).attr('status') });
+	$.get("<?=$view['router']->generate('jameswuvocabbundle.main.word.random')?>", function(data){
 		console.log(data);
 		$('#word_text').text(data.word_text);
 		$('#word_text').attr('word_id',data.word_id);
 		$('#definition_container').css("visibility", "hidden");
 	}, "json");
 	});
-$.get("<?=$view['router']->generate('random_word_main')?>", function(data){
+$.get("<?=$view['router']->generate('jameswuvocabbundle.main.word.random')?>", function(data){
 	console.log(data);
 	$('#word_text').text(data.word_text);
 	$('#word_text').attr('word_id',data.word_id);

@@ -22,7 +22,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="<?=$view['router']->generate('jameswuvocabbundle.main.index')?>">Welcome</a>
+          <a class="brand" href="<?=$view['router']->generate('jameswuvocabbundle.main.index')?>">Vocabulary Cards</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="<?php if ($view['request']->getParameter('_route') == 'jameswuvocabbundle.main.index') echo 'active'?>"><a href="<?=$view['router']->generate('jameswuvocabbundle.main.index')?>">Vocab Review</a></li>

@@ -1,4 +1,4 @@
 vocabularycards
 ===============
 
-Vocabulary Cards to help study for GRE
+Vocabulary Flash Cards. Uses Twitter Bootstrap and JQuery. It shows cards you miss more often.

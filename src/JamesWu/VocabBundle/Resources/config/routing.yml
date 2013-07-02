@@ -1,0 +1,4 @@
+# src/JamesWu/VocabBundle/Resources/config/routing.yml
+vocab:
+     resource: "@JamesWuVocabBundle/Controller/MainController.php"
+     type: annotation

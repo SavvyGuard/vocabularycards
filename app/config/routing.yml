@@ -1,4 +1,3 @@
 vocab:
-    resource: "@JamesWuVocabBundle/Controller/MainController.php"
-    type:     annotation
+    resource: "@JamesWuVocabBundle/Resources/config/routing.yml"
     

@@ -26,8 +26,6 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="<?php if ($view['request']->getParameter('_route') == 'jameswuvocabbundle.main.index') echo 'active'?>"><a href="<?=$view['router']->generate('jameswuvocabbundle.main.index')?>">Vocab Review</a></li>
-              <li class="<?php if ($view['request']->getParameter('_route') == 'jameswuvocabbundle.main.about') echo 'active'?>"><a href="<?=$view['router']->generate('jameswuvocabbundle.main.about')?>">About</a></li>
-              <li class="<?php if ($view['request']->getParameter('_route') == 'jameswuvocabbundle.main.contact') echo 'active'?>"><a href="<?=$view['router']->generate('jameswuvocabbundle.main.contact')?>">Contact</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

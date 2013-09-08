@@ -1,4 +1,8 @@
 vocabularycards
 ===============
 
-Vocabulary Flash Cards. Uses Twitter Bootstrap and JQuery. It shows cards you miss more often.
+Vocabulary Flash Cards.
+
+##About
+Uses Twitter Bootstrap and JQuery. 
+It shows cards you miss more often.  
